@@ -1,0 +1,27 @@
+*{
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+td{
+    background-color: #ccc;
+    padding: 10px 30px 10px 30px;
+    border-radius: 0.2em;
+    text-align: center;
+    cursor: default;
+}
+#positionShow{
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+}
+button{
+    background-color: #ff8028;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
