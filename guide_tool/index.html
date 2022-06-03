@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+	<link href="http://www.shz260.com/css/bootstrap.min.css" rel="stylesheet">
+	<script type = "text/javascript" src = "js/canvas_auto.js"></script>
+	<script type = "text/javascript" src = "js/sidebar.js"></script>
+	<script type = "text/javascript" src = "js/mode_op.js"></script>
+	<script type = "text/javascript" src = "js/result_text.js"></script>
+	<script type = "text/javascript" src = "js/upload_read.js"></script>
+	<script type = "text/javascript" src = "js/drawCanvas.js"></script>
+	<script type = "text/javascript" src = "js/pointchoose.js"></script>
+	<script type = "text/javascript" src = "js/content-change.js"></script>
+	<script type = "text/javascript" src = "js/solenoids_merge.js"></script>
+	<script type = "text/javascript" src = "js/mode_rules.js"></script>
+	<script type = "text/javascript" src = "js/default_set.js"></script>
+	<script type = "text/javascript" src = "js/customize_draw.js"></script>
+	<script type = "text/javascript" src = "js/component_list.js"></script>
+	<script type = "text/javascript" src = "js/inlet_choose.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>uF guide tool</title>
+</head>
+<body>
+	<!--sidebar-->
+	<div id="mySidenav" class="sidenav">
+	  <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+	  <button class="button" id="side1" style="color: #111111;" onclick="hide();show(1);color(1)">Step 1</button>
+	  <button class="button" id="side2" onclick="hide();show(2);color(2)">Step 2</button>
+	  <button class="button" id="side3" onclick="hide();show(3);color(3)">Step 3</button>
+	  <button class="button" id="side4" onclick="hide();show(4);color(4)">Step 4</button>
+	  <button class="button" id="side5" onclick="hide();show(5);color(5)">Step 5</button>
+	</div>
+	 
+	<div id="main" style="position: relative; left: 100px;">
+		<div style="width: 480px; float: left; margin-right: 10px; position: relative;">
+			<!-- <button class="button" id="back" onclick="openNav();color(step)">Other steps</button> -->
+			<div id="step1">
+				<h1>Step 1</h1>
+				<h3>Upload 3Duf design file in json. Click upload below.</h3>
+				<br>
+				<input type="file" name="file" id="file" class="inputfile" accept=".json" onchange="read()"/>
+				<label for="file" style="line-height: 36px; text-align: center;" >Upload</label>
+				<br>
+				<!-- <button class="button" onclick="">Analyse it!</button> -->
+				<table border="1" align="center" id="jsonshow" style="margin-bottom: 20px;">
+					<tr>
+						<th style="padding:5px 10px;">Type of Elements</th>
+						<th style="padding:5px 10px;">Numbers</th>
+					</tr>
+					<tbody id="tb1">
+						
+					</tbody>
+				</table>
+				<!-- <button class="button" onclick="">Draw Now!</button> -->
+			</div>
+			<div id="step2" style="display: none;">
+				<h1>Step 2</h1>
+				<h3>Select button blow to check where they are</h3>
+				<br>
+				<table border="1" align="center" id="element_types" style="margin-bottom: 20px;">
+					<tr>
+						<th style="padding:5px 10px;">Types of Elements</th>
+						<th style="padding:5px 10px;">Numbers</th>
+					</tr>
+					<tbody id="tb2"></tbody>
+					
+				</table>
+			</div>
+			<div id="step3" style="display: none;">
+				<h1>Step 3</h1>
+				<h3>Checkout for examples of operation modes you can play, then click next to asssign IDs to your system</h3>
+				<div style="width:450px; margin-left: 10px; float:left; display: inline-block;">
+					<h3>Modes Descriptions</h3>
+					<br>
+				    <div id="modes_introduction">
+						<div id="mode-0">
+							<a id="mode-des-0" class="mode-des" onclick="description_change(0)">0-Priming MCs, MCMs, MFMs and ALL Channels of the Board using MIX</a>
+						</div>
+						<div id="mode-1">
+							<a id="mode-des-1" class="mode-des" onclick="description_change(1)">1-Loading cells in each inlet independently from MUX</a>
+						</div>
+						<div id="mode-2">
+							<a id="mode-des-2" class="mode-des"  onclick="description_change(2)">2-Cleaning of all main channels and the reservoir after cell loading</a>
+						</div>
+						<div id="mode-3"><a id="mode-des-3" class="mode-des" onclick="description_change(3)">3-Filling in the reservoirs with no operation to bring anything to any inlets (only reservoirs), followed by cleaning of needed
+						</a></div>
+						<div id="mode-4">
+							<a id="mode-des-4" class="mode-des" onclick="description_change(4)">4-Cleaning of all main channels after reservoir filling</a>
+						</div>
+						<div id="mode-5">
+							<a id="mode-des-5" class="mode-des" onclick="description_change(5)">
+								5-Both inlets of a MCM receive media from the reservoirs independent and simultaneously with MUX closed
+							</a>				
+						</div>
+						<div id="mode-6">
+							<a id="mode-des-6" class="mode-des" onclick="description_change(6)">
+								6-Feeding inlets from reservoirs stopped, then reservoirs receive media from MUX one at the time for re-filing</a>
+						</div>
+						<div id="mode-7">
+							<a id="mode-des-7" class="mode-des"  onclick="description_change(7)">7-Final cleaning of all channels after experiments are gone, and MCMs are removed. (Open all of the valves)</a>
+						</div>
+						<br>
+					</div>
+					<button class="mode" id="mode3_0" onclick="mode_color_3(0);mode_sample(0)">0</button>
+					<button class="mode" id="mode3_1" onclick="mode_color_3(1);mode_sample(1)">1</button>
+					<button class="mode" id="mode3_2" onclick="mode_color_3(2);mode_sample(2)">2</button>
+					<button class="mode" id="mode3_3" onclick="mode_color_3(3);mode_sample(3)">3</button>
+					<button class="mode" id="mode3_4" onclick="mode_color_3(4);mode_sample(4)">4</button>
+					<button class="mode" id="mode3_5" onclick="mode_color_3(5);mode_sample(5)">5</button>
+					<button class="mode" id="mode3_6" onclick="mode_color_3(6);mode_sample(6)">6</button>
+					<button class="mode" id="mode3_7" onclick="mode_color_3(7);mode_sample(7)">7</button>
+					
+				</div>
+			</div>
+			<div id="step4" style="display: none;">
+				<h1>Step 4</h1>
+				<h3>Choose inlets and outlets. Check what the path looks like.</h3>
+				<h1>Inlets: 
+					<p id="inletshow", style="word-wrap:break-word;margin: 5px;font-size: 15px;"></p>
+				</h1>
+				<h1>Outlets:
+					<p id="outletshow", style="word-wrap:break-word;margin: 5px;font-size: 15px;"></p>
+				</h1>
+				<button onclick="color_points(index_port)" class="button" id="choose" style="float: left; margin-right: 20px;"> Choose points</button>
+				<table border="1" align="center" id="element_types" style="margin-bottom: 20px;">
+					<tr>
+						<th>Port Id</th>
+						<th>Comments</th>
+					</tr>
+					<tbody id="tb4-1">
+						
+					</tbody>
+				</table>
+				<button class="mode" id="mode0" onclick="mode_color(0)">0</button>
+				<button class="mode" id="mode1" onclick="mode_color(1)">1</button>
+				<button class="mode" id="mode2" onclick="mode_color(2)">2</button>
+				<button class="mode" id="mode3" onclick="mode_color(3)">3</button>
+				<button class="mode" id="mode4" onclick="mode_color(4)">4</button>
+				<button class="mode" id="mode5" onclick="mode_color(5)">5</button>
+				<button class="mode" id="mode6" onclick="mode_color(6)">6</button>
+				<button class="mode" id="mode7" onclick="mode_color(7)">7</button>
+				
+				<br>
+				<h4>Click once: select the mode</h4>
+				<h4>Click twice: delete the chosen mode</h4>
+				
+				<div id="chosen_mode" >
+					<p>Mode Description</p>
+				</div>
+				<button onclick="check_lets(2)" class="button" id="check" style="float: left; margin-right: 50px;"> Check !</button>
+				<button onclick="refresh()" class="button" id="refresh"> Refresh !</button>
+				<button onclick="check_lets(1);addlist()" class="button" id="addlist"> Add into list !</button>
+				<table border="1" align="center" id="modetable" style="margin-bottom: 20px;">
+					<tr>
+						<th>Mode id</th>
+						<th>Chosen ports</th>
+					</tr>
+					<!-- tb4-2 is in mode_op -->
+					<tbody id="tb4-2">
+						
+					</tbody>
+				</table>
+				<button onclick="canvas_mode();hide();next_show();color(step)" class="button" id="checklist"> Check list  &&  Next!</button>
+			</div>
+			<div id="step5" style="display: none;">
+				<h1>Step 5</h1>
+				<br>
+				<table border="1" align="center" id="table5" style="margin-bottom: 20px;">
+					<thead>
+						<th>mode</th>
+						<th>Open Ports</th>
+						<th>Close Ports</th>
+					</thead>
+					<tbody id="tb5">
+
+					</tbody>
+				</table>
+				<br>
+				<table border="1" align="center" id="table5-2" style="margin-bottom: 20px;">
+					<thead>
+						<th>Solenoid ID</th>
+						<th>Ports</th>
+					</thead>
+					<tbody id="tb5-2">
+						
+					</tbody>
+				</table>
+				<p>Example output of the Last Situation</p>
+				<table border="1" align="center" id="table5-2" style="margin-bottom: 20px;">
+					<tbody id="tb5-3">
+						
+					</tbody>
+				</table>
+				<button class="button" id="dload" onclick="downloadTxt('control_solenoids.txt',index_ctrl_port)">Download Current Path</button>
+			</div>
+
+			<button class="button" id="next" onclick="hide();next_show();color(step)">Next</button>
+		</div>
+		<div style="position: relative; float: left; left: 30px;">
+			<canvas id="myCanvas" width="1280px" height="850px" style="background: #dddddd; border:1px solid #aaaaaa; " onclick="choosepoint();add_row();add_inlet()"></canvas>
+		</div>	
+	</div>
+
+	
+</body>
+</html>

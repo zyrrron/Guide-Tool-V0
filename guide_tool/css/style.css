@@ -1,0 +1,98 @@
+*{
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+td,th{
+    background-color: lightcyan;
+	color: #111;
+    padding: 5px 10px 5px 10px;
+    border-radius: 0.2em;
+    text-align: center;
+    cursor: default;
+	font-size: 25px;
+}
+#positionShow{
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+#step1,#step2,#step3,#step4,#step5{
+	z-index: 10;
+}
+
+.input{
+	width: 300px;
+}
+#port4{
+	width: 160px;
+}
+#check2{
+	width: 50px;
+}
+#checklist{
+	width: 200px;
+}
+.inputfile {
+    width: 0.1px; 
+    height: 0.1px; 
+    opacity: 0; 
+    overflow: hidden; 
+    position: absolute; 
+    z-index: -1;
+}
+.mode{
+	width: 50px;
+	float: left;
+	margin-right: 10px;
+	height: 40px;
+	background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+	border: none;
+	border-radius: 5px;
+	position: relative;
+	border-bottom: 4px solid #2b8bc6;
+	color: #fbfbfb;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	font-size: 15px;
+	text-align: center;
+	text-indent: 5px;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+	cursor: pointer;
+
+	/* Just for presentation */  
+	display: block;
+	margin-bottom: 20px;
+}
+
+#dload{
+	width: 250px;
+}
+.diy{
+	width: 70px;
+	float: left;
+	margin-right: 10px;
+	height: 40px;
+	background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+	border: none;
+	border-radius: 5px;
+	position: relative;
+	border-bottom: 4px solid #2b8bc6;
+	color: #fbfbfb;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	font-size: 15px;
+	text-align: center;
+	text-indent: 5px;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+	cursor: pointer;
+	
+	/* Just for presentation */  
+	display: block;
+	margin-bottom: 20px;
+}

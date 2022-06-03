@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="data/My-Device-V0.json"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <link href="http://www.shz260.com/css/bootstrap.min.css" rel="stylesheet">
+    <script type = "text/javascript" src = "js/canvas_auto_test.js"></script>
+    <!--<script>-->
+        <!--function m(){-->
+            <!--document.getElementById("positionShow").innerHTML=event.clientX +" , "+event.clientY;-->
+        <!--}-->
+    <!--</script>-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>uF guide tool</title>
+
+</head>
+<body>
+
+    <img src="image/device-0.jpg" alt="tulip" id="tulip" style="margin-left: 0px;" />
+    <div>
+        <div id="jsonTip"></div>
+    </div>
+
+    <div style="margin-bottom: 50px;height:850px">
+        <canvas id="myCanvas" width="1280" height="850" style="background: #dddddd; border:1px solid #aaaaaa; float:left;" onclick="choosepoint()"></canvas>
+        <button type="button" onclick="new_grapgh()">Start Now!</button>
+        <div style="width:500px; margin-left: 20px; float:left; display: inline-block;">
+            <h4 id="modes_introduction">
+                1-Loading cells in each inlet independently from MUX<br><br>
+                2-Cleaning of all main channels and the reservoir after cell loading<br><br>
+
+            </h4>
+        </div>
+        <br><br>
+        <div>
+            <button type="button">Mode: </button>
+            <br><br>
+            <button type="button" onclick="mode(1)">1</button>
+            <button type="button" onclick="mode(2)">2</button>
+
+            <br>
+
+            <br>
+        </div>
+    </div>
+    <div>
+        <h1 id="positionShow">Position</h1>
+    </div>
+
+    <div>
+        <button type="button" onclick="newCanvas(1)" style="float:right; margin-right: 20px" >Path Graph(flow level)</button>
+        <button type="button" onclick="newCanvas(2)" style="float:right; margin-right: 20px" >Path Graph(control level)</button>
+        <button type="button" onclick="newCanvas(3)" style="float:right; margin-right: 20px" >Path Graph(both)</button>
+        <br>
+        <canvas id="newCanvas" width="1280" height="850" style="background: #dddddd; border:1px solid #aaaaaa;" ></canvas>
+    </div>
+
+    <!--<canvas id = "drawing" width = "200" height= "200">A drawing of something</canvas>-->
+</body>
+</html>

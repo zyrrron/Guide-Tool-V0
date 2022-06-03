@@ -1,0 +1,145 @@
+
+@charset "utf-8";
+/* CSS Document */
+ 
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .3s;
+	height: 100%;
+}
+
+.mode-des{
+	font-size: 18px;
+}
+
+input{
+	font-size: 16px;
+}
+
+/*侧边栏选择器*/
+.sidenav {
+    height: 100%;
+    width: 100px; /*原始宽度*/
+    position: fixed;
+	z-index: 1;
+    /*z-index、top、left共同控制侧栏的悬浮（上方1，下方-1）*/
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s; /*侧栏延迟0.5s显示*/
+    padding-top: 60px;
+	float: left;
+}
+ 
+/*侧边栏标签选择器*/
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: lightcyan;
+    display: block;
+    transition: 0.3s; /*标签延迟0.3s显示*/
+}
+ 
+/*侧栏标签和关闭按钮光标的效果*/
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+ 
+/*侧栏和关闭按钮的位置选择器*/
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav .button{
+	width: 90px;
+}
+/*主体内容*/
+#main {
+    transition: margin-left .5s;/*主体内容延迟0.5s整体y右移动*/
+    padding: 16px;
+}
+ 
+/*当文档高度小于450px时，改变侧栏的padding属性和字体大小*/
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+span{
+	font-size:30px;
+	cursor:pointer;
+	width: 300px;
+	height:100%;
+	color: #243747;
+}
+.button,label{
+	width: 180px;
+	height: 40px;
+	background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+	border: none;
+	border-radius: 5px;
+	position: relative;
+	border-bottom: 4px solid #2b8bc6;
+	color: #fbfbfb;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	font-size: 15px;
+	text-align: left;
+	text-indent: 5px;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+	cursor: pointer;
+
+	/* Just for presentation */  
+	display: block;
+	margin-bottom: 20px;
+	line-height: 36px;
+}
+.button:active {
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+  top: 1px;
+}
+
+.button:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-left: 16px solid transparent;
+  border-right: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 5px 0;  
+}
+
+/* Button pointing left */
+
+#back {
+  text-align: right;
+  box-sizing: border-box;
+}
+#back:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-right: 16px solid transparent;
+  border-left: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  left: 0;
+  top: 0;
+  border-radius: 5px 0 0 5px;    
+}
